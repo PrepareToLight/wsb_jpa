@@ -1,1 +1,1 @@
-"# wsb_jpa" 
+# JPA project for the Introduction to BackEnd techologies course
