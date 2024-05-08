@@ -22,6 +22,7 @@ public class AddressEntity {
 
 	private String postalCode;
 
+
 	public Long getId() {
 		return id;
 	}
