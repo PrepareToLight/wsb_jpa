@@ -2,16 +2,13 @@ package com.capgemini.wsb.dto;
 
 import com.capgemini.wsb.persistence.entity.AddressEntity;
 import com.capgemini.wsb.persistence.entity.VisitEntity;
+import com.capgemini.wsb.persistence.enums.Specialization;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.List;
 
-import java.io.Serializable;
-
-public class PatientTO implements Serializable{
+public class DoctorTO {
     private Long id;
-
     private String firstName;
 
     private String lastName;
@@ -20,14 +17,15 @@ public class PatientTO implements Serializable{
 
     private String email;
 
-    private String patientNumber;
+    private String doctorNumber;
 
-    private LocalDate dateOfBirth;
+    private Specialization specialization;
 
-    // generated using generate - getter and setter
-
+    // jednokierunkowa relacja
     private AddressTO addressTO;
-    // zad 1. adding list from enntity
+
+    // jednokierunkowa relacja
+
     private List<VisitTO> visitTOList;
 
     public Long getId() {
@@ -70,20 +68,20 @@ public class PatientTO implements Serializable{
         this.email = email;
     }
 
-    public String getPatientNumber() {
-        return patientNumber;
+    public String getDoctorNumber() {
+        return doctorNumber;
     }
 
-    public void setPatientNumber(String patientNumber) {
-        this.patientNumber = patientNumber;
+    public void setDoctorNumber(String doctorNumber) {
+        this.doctorNumber = doctorNumber;
     }
 
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
+    public Specialization getSpecialization() {
+        return specialization;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
+    public void setSpecialization(Specialization specialization) {
+        this.specialization = specialization;
     }
 
     public AddressTO getAddressTO() {

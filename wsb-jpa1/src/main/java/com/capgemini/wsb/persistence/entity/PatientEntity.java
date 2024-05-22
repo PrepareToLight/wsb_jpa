@@ -30,6 +30,13 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private LocalDate dateOfBirth;
 
+	@Column(nullable = false)
+	private boolean IsPremiumClient;
+
+	@OneToMany(mappedBy = "patientEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<VisitEntity> visitEntityList;
+
+
 	// jednokierunkowa relacja
 	@OneToOne(
 			cascade = CascadeType.ALL,
@@ -39,13 +46,14 @@ public class PatientEntity {
 	private AddressEntity addressEntity;
 
 	// jednokierunkowa relacja
+	/*
 	@OneToMany(
 			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER
+			fetch = FetchType.LAZY
 	)
 	@JoinColumn(name = "PATIENT_ID")
 	private List<VisitEntity> visitEntityList;
-
+	*/
 	public Long getId() {
 		return id;
 	}
@@ -101,5 +109,14 @@ public class PatientEntity {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+	public List<VisitEntity> getVisitEntityList() {return visitEntityList;}
+
+	public void setVisitEntityList(List<VisitEntity> visitEntityList) {this.visitEntityList = visitEntityList;}
+
+	public boolean getIsPremiumClient() {return IsPremiumClient;}
+
+	public void setIsPremiumClient() {this.IsPremiumClient = IsPremiumClient;}
+
 
 }

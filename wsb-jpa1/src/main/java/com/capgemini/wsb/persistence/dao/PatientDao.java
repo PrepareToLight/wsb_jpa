@@ -1,2 +1,14 @@
-package com.capgemini.wsb.persistence.dao;public interface PatientDao {
+package com.capgemini.wsb.persistence.dao;
+
+import com.capgemini.wsb.persistence.entity.PatientEntity;
+
+import java.util.List;
+
+public interface PatientDao extends Dao<PatientEntity, Long> {
+
+    List<PatientEntity> findPatientByLastName(String lastName);
+
+    List<PatientEntity> findPatientsWithMoreThanSpecifiedVisits (int limit);
+
+    List<PatientEntity> findAllPremiumPatients();
 }

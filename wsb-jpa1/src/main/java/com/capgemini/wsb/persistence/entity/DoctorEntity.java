@@ -41,8 +41,8 @@ public class DoctorEntity {
 
 	// jednokierunkowa relacja
 	@OneToMany(
-			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE},
+			fetch = FetchType.LAZY
 	)
 	@JoinColumn(name = "DOCTOR_ID")
 	private List<VisitEntity> visitEntityList;
@@ -101,6 +101,22 @@ public class DoctorEntity {
 
 	public void setSpecialization(Specialization specialization) {
 		this.specialization = specialization;
+	}
+
+	public AddressEntity getAddressEntity() {
+		return addressEntity;
+	}
+
+	public void setAddressEntity(AddressEntity addressEntity) {
+		this.addressEntity = addressEntity;
+	}
+
+	public List<VisitEntity> getVisitEntityList() {
+		return visitEntityList;
+	}
+
+	public void setVisitEntityList(List<VisitEntity> visitEntityList) {
+		this.visitEntityList = visitEntityList;
 	}
 
 }

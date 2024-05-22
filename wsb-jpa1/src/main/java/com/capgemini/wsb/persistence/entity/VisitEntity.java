@@ -19,12 +19,34 @@ public class VisitEntity {
 	private LocalDateTime time;
 
 	// jednokierunkowa relacja
+	/*
 	@OneToMany(
 			cascade = CascadeType.ALL,
-			fetch = FetchType.EAGER
+			fetch = FetchType.LAZY
 	)
 	@JoinColumn(name = "VISIT_ID")
 	private List<MedicalTreatmentEntity> medicalTreatmentEntityList;
+	*/
+	@OneToMany(mappedBy = "visitEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	private List<MedicalTreatmentEntity> medicalTreatmentEntityList;
+
+	/*
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "DOCTOR_ID")
+	private DoctorEntity doctorEntity;
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "PATIENT_ID")
+	private PatientEntity patientEntity;
+	*/
+	@ManyToOne
+	@JoinColumn(name = "PATIENT_ID")
+	private PatientEntity patientEntity;
+
+	@ManyToOne
+	@JoinColumn(name = "DOCTOR_ID")
+	private DoctorEntity doctorEntity;
+
 
 	public Long getId() {
 		return id;
@@ -50,4 +72,27 @@ public class VisitEntity {
 		this.time = time;
 	}
 
+	public List<MedicalTreatmentEntity> getMedicalTreatmentEntityList() {
+		return medicalTreatmentEntityList;
+	}
+
+	public void setMedicalTreatmentEntityList(List<MedicalTreatmentEntity> medicalTreatmentEntityList) {
+		this.medicalTreatmentEntityList = medicalTreatmentEntityList;
+	}
+
+	public DoctorEntity getDoctorEntity() {
+		return doctorEntity;
+	}
+
+	public void setDoctorEntity(DoctorEntity doctorEntity) {
+		this.doctorEntity = doctorEntity;
+	}
+
+	public PatientEntity getPatientEntity() {
+		return patientEntity;
+	}
+
+	public void setPatientEntity(PatientEntity patientEntity) {
+		this.patientEntity = patientEntity;
+	}
 }

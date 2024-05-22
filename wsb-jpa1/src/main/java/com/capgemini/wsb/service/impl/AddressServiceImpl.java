@@ -17,10 +17,7 @@ public class AddressServiceImpl implements AddressService
     private final AddressDao addressDao;
 
     @Autowired
-    public AddressServiceImpl(AddressDao pAddressDao)
-    {
-        addressDao = pAddressDao;
-    }
+    public AddressServiceImpl(AddressDao pAddressDao) {addressDao = pAddressDao;}
 
     @Override
     public AddressTO findById(Long id) {

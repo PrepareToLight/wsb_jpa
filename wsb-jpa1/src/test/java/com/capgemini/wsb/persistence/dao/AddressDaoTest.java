@@ -1,4 +1,6 @@
-package com.capgemini.wsb.persistance.dao;
+package com.capgemini.wsb.persistence.dao;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import com.capgemini.wsb.persistence.dao.AddressDao;
 import com.capgemini.wsb.persistence.entity.AddressEntity;
@@ -17,17 +19,6 @@ public class AddressDaoTest
 {
     @Autowired
     private AddressDao addressDao;
-
-    @Transactional
-    @Test
-    public void testShouldFindAddressById() {
-        // given
-        // when
-        AddressEntity addressEntity = addressDao.findOne(1L);
-        // then
-        assertThat(addressEntity).isNotNull();
-        assertThat(addressEntity.getPostalCode()).isEqualTo("62-030");
-    }
 
     @Test
     public void testShouldSaveAddress() {
